@@ -1,4 +1,4 @@
-package io.thoeni;
+package com.joe.pruebas.main;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -13,8 +13,11 @@ public class Main {
         final Clock clock = new NanoClock();
         System.out.printf("Calling the hostname resolution method...%n");
         final Instant startTime = Instant.now(clock);
-        String hostName = InetAddress.getLocalHost().getHostName();
+        InetAddress addr = InetAddress.getLocalHost();
+        String hostName = addr.getHostName();
+        String ip = addr.toString();
         final Instant endTime = Instant.now(clock);
-        System.out.printf("Method called, hostname %s, elapsed time: %d (ms)%n", hostName, TimeUnit.NANOSECONDS.toMillis(Duration.between(startTime, endTime).toNanos()));
+        System.out.printf("Method called, hostname %s | ip %s, elapsed time: %d (ms)%n", hostName, ip
+                , TimeUnit.NANOSECONDS.toMillis(Duration.between(startTime, endTime).toNanos()));
     }
 }
